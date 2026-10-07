@@ -1,0 +1,72 @@
+{
+  "name": "wikiderby",
+  "productName": "WikiDerby",
+  "version": "1.0.0",
+  "description": "WikiDerby desktop app",
+  "author": {
+    "name": "Xofanic",
+    "email": "hello@wikiderby.io"
+  },
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --linux AppImage deb --win nsis portable --mac zip"
+  },
+  "build": {
+    "appId": "io.wikiderby.desktop",
+    "productName": "WikiDerby",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "build/icon.png"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Game",
+      "icon": "build/icon.png",
+      "maintainer": "Xofanic",
+      "syncDesktopName": true
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "WikiDerby"
+    },
+    "portable": {
+      "artifactName": "WikiDerby-Portable-${version}.exe"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png",
+      "category": "public.app-category.games",
+      "identity": null
+    },
+    "artifactName": "WikiDerby-${version}-${os}-${arch}.${ext}"
+  },
+  "devDependencies": {
+    "electron": "^44.6.0",
+    "electron-builder": "^26.15.3"
+  },
+  "homepage": "https://wikiderby.io",
+  "desktopName": "wikiderby.desktop"
+}
